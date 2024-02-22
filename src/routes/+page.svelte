@@ -1,6 +1,8 @@
 <script>
-	import Message from '../components/Message.svelte';
+	import MessageInput from '../components/MessageInput.svelte';
+	import Messages from '../components/Messages/Messages.svelte';
 </script>
 
-<Message sender="Me" content="Hello world!" />
-<Message sender="You" content="Hi there!" />
+<Messages />
+
+<MessageInput />
