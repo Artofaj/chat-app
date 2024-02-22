@@ -1,12 +1,10 @@
 <script>
 	import Message from './fragments/Message.svelte';
-	import MockResponse from './mockResponse.json';
-
 	import { messages } from '../../stores/messages';
 </script>
 
 <div class="wrapper">
-	{#each $messages as message}
+	{#each $messages as message (message.id)}
 		<Message sender={message.sender} content={message.content} />
 	{/each}
 </div>

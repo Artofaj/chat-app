@@ -1,5 +1,7 @@
 <script>
 	import { addMessage } from '../stores/messages';
+	import mockResponse from '../components/Messages/mockResponse.json';
+
 	let message = '';
 
 	const handleSubmit = () => {
@@ -12,6 +14,11 @@
 		});
 
 		message = '';
+		addMessage({
+			content: mockResponse.choices[0].message.content,
+			sender: mockResponse.choices[0].message.role,
+			id: mockResponse.id
+		});
 	};
 
 	const handleInput = (e) => {
