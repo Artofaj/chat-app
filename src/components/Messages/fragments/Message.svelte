@@ -13,6 +13,7 @@
 		margin-bottom: 10px;
 		max-width: 500px;
 		background-color: #fff;
+		padding: 1rem;
 	}
 
 	.sender {
