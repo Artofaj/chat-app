@@ -1,15 +1,14 @@
 <script>
 	import Message from './fragments/Message.svelte';
 	import MockResponse from './mockResponse.json';
+
+	import { messages } from '../../stores/messages';
 </script>
 
 <div class="wrapper">
-	<Message sender="assistant" content="How can I help you today?" />
-	<Message sender="user" content="Hello world!" />
-	<Message
-		sender={MockResponse.choices[0].message.role}
-		content={MockResponse.choices[0].message.content}
-	/>
+	{#each $messages as message}
+		<Message sender={message.sender} content={message.content} />
+	{/each}
 </div>
 
 <style>

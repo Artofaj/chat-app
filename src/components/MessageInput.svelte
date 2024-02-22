@@ -1,17 +1,31 @@
 <script>
+	import { addMessage } from '../stores/messages';
 	let message = '';
 
-	function sendMessage() {
-		// Logic to send the message
-		console.log('Sending message:', message);
+	const handleSubmit = () => {
+		const timestamp = new Date().getTime();
+
+		addMessage({
+			content: message,
+			sender: 'user',
+			id: timestamp
+		});
+
 		message = '';
-	}
+	};
+
+	const handleInput = (e) => {
+		if (e.which === 13 && !e.shiftKey) {
+			e.preventDefault();
+			handleSubmit();
+		}
+	};
 </script>
 
-<div class="wrapper">
-	<textarea bind:value={message} placeholder="Type your message..." />
-	<button on:click={sendMessage}>Send</button>
-</div>
+<form class="wrapper" on:submit={handleSubmit}>
+	<textarea bind:value={message} placeholder="Type your message..." on:keydown={handleInput} />
+	<input type="submit" value="Send" />
+</form>
 
 <style>
 	.wrapper {
